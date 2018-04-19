@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+ <head>
+  <title> Tree map layout</title>
+ </head>
+
+<style>
+
+.App1 {
+  fill: darkblue;
+  /*opacity: 0.3;*/
+  /*stroke: #aba5a5;*/
+  stroke-width: 5px
+}
+.App2 {
+  fill: red;
+  /*opacity: 0.3;*/
+  /*stroke: #aba5a5;*/
+  stroke-width: 5px    
+}.App3 {
+  fill: black;
+  /*opacity: 0.3;*/
+  /*stroke: #aba5a5;*/
+  stroke-width: 5px
+}
+.App4 {
+  fill: #a259a5;
+  /*opacity: 0.3;*/
+  /*stroke: #aba5a5;*/
+  stroke-width: 5px
+}
+.App5 {
+  fill: #d185c5;
+}
+.App10 {
+  fill: #143as5;
+  stroke-width: 5px
+}
+.par1 {
+  fill: #2f92ee;
+  /*opacity: 0.3;*/
+  /*stroke: orange;*/
+  stroke-width: 5px
+}
+.par3 {
+  fill: #2f92ee;
+  /*opacity: 0.3;*/
+  /*stroke: orange;*/
+  stroke-width: 5px
+}
+.par0 {
+  fill: black;
+  /*opacity: 0.3;*/
+  /*stroke: orange;*/
+  stroke-width: 5px
+}
+.par2 {
+  fill: #aba5a5;
+  /*opacity: 0.3;*/
+  /*stroke: #42a575;*/
+  stroke-width: 5px
+}
+
+text {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 18px;
+}
+g text {
+  fill: yellow;
+  font-size: 18px; 
+}
+</style>
+
+<body>
+  <div id="content"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+  <script>
+      
+var width = 500, height = 2000;
+
+d3.select('#content')
+     .attr('width', width*4 + 'px')
+     .attr('height', height + 'px')
+
+d3.json("flare.json", function(error, data) {
+    var z = [];    
+    var ratios = [];
+    var rootNode = [];
+
+    for(var i=0;i<data.length;i++){ 
+        var h=0;
+        ratios.push(1);
+        rootNode[i] = d3.hierarchy(data[i])
+        var a = rootNode[i].children[0].ancestors()[1].children; 
+
+        for(var n=0;n<a.length;n++){ 
+            a[n].children.length%3 == 0 ? h = h + parseInt(a[n].children.length/3)
+            : h = h + parseInt(a[n].children.length/3)+1 
+            rootNode[i].h=h;
+            z.push(rootNode[i].h*150+250*rootNode[i].h*0.1)
+        }
+
+        rootNode[i].sum(function(d) {
+          return d.size;
+        });
+    }
+
+    function enteringTreemap(d,i) {    
+    //d3.select(this).attr("height",rootNode[i].h*150+250*rootNode[i].h*0.1+30);  
+        var treemapLayout = d3.treemap()
+          .size([500,rootNode[i].h*150+250*rootNode[i].h*0.1])
+          .paddingOuter(20);
+
+        treemapLayout.tile(d3.treemapSquarify.ratio(d))
+        treemapLayout(rootNode[i]);
+
+    var nodes = d3.select(this)
+        .append('g')
+        .attr('transform', 'translate(0 , 20)')
+        .selectAll('g')
+        .data(rootNode[i].descendants())
+        .enter()
+        .append('g')
+        .attr("class", function(d) { return d.depth == 0 && d.children !== undefined ? "par1"
+                                          : d.depth == 1 && d.children !== undefined && d.children[0].data.label_short !== "App5" ? "par2"
+                                          : d.depth == 1 && d.children !== undefined && d.children[0].data.label_short == "App5" ? "par3"
+                                          : d.data.label_long;});
+
+    nodes                                 
+        .attr('transform', function(d,i) {
+            if(d.depth == 0 )
+                return 'translate(' + [d.x0+10, d.y0+10] + ')';
+        else if(d.depth == 1){
+                return 'translate(' + [(d.x0+7), d.y0+30] + ')';
+    //return 'translate(' + [(d.x0+(450*((i-1)%3))+7), parseInt((i-1)/3)*793+30] + ')';
+            }
+        else 
+                return 'translate(' + [d.x0+10, d.y0+60] + ')';             
+        });
+
+     nodes
+        .append('rect')
+        .attr('width', function(d) { return d.depth == 2 || d3.select(this).attr('class') == d.data.label_long ? 100 
+                                          : d.depth == 0 ? (d.x1 - d.x0)-20 
+                                          : d.depth == 1 ? (d.x1 - d.x0)-20 : width; })
+        .attr('height',function(d) { return d.depth == 2 || d3.select(this).attr('class') == d.data.label_long  ? 100 
+                                          : d.depth == 0 ? (d.y1 - d.y0)-10 
+                                          : d.depth == 1 ? (d.y1 - d.y0)-20 : height; })
+        .attr('rx', 5)
+        .attr('ry', 5)
+
+    nodes
+        .on('mouseover', function(){
+            console.log(d3.select(this).attr('class'))
+            if(d3.select(this).attr('class') !== "par3"){     
+             d3.select(this).select('rect')
+             .attr("stroke","white");
+             } 
+        })
+        .on('mouseout', function(){
+            if(d3.select(this).attr('class') !== "par3"){
+             d3.select(this).select('rect')
+             .attr("stroke", d3.select(this).select('rect').attr("fill"));
+             }
+        })
+        .on('click', function(d) {
+           console.log(d3.select(this))
+         d3.select(this).select('rect')
+         .attr("stroke","yellow"); 
+        });
+
+    nodes
+        .append('text')
+        .attr('dx', function(d) { return d.children ? (d.x1 - d.x0)/2-30 : 30; })
+        .attr('dy', function(d) { return d.children ? 25 :55; })
+        .text(function(d) {
+          return d.depth == 1 && d.children !== undefined && d.children[0].data.label_short == "App5" ? "" 
+          : d.data.label_long;
+        })                     
+    }
+
+    height = z.reduce(function(a, b) {
+        return Math.max(a, b) 
+    })+30;
+
+    var treemaps = d3.select('#content')
+      .selectAll('svg')
+      .data(ratios)
+      .enter()
+      .append('svg')
+      .attr('width', width + 'px')
+      .attr('height', height + 'px')
+      .each(enteringTreemap)  
+});
+
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+{
+ "Title":"Tree Chart",   
+ "name": "flare",
+ "children": [
+  {
+    
+      "id": 55,
+      "name": "korea",
+      "customId": "3",
+      "viewId": 611
+    }
+  ,
+  {
+    
+      "id": 56,
+      "name": "Toyota",
+      "customId": "4",
+      "viewId": 612
+    },{
+      "name":"Kamal"  ,
+    "children": [
+       {
+          "id": 53,
+          "name": "japan",
+          "customId": "1",
+          "viewId": 610
+        },{
+            "name":"Mohammad"  ,
+        "children": [
+          {
+            
+              "id": 52,
+              "name": "Khaled Org Test with parent e",
+              "description": "Khaled Org Test with parent",
+              "alias": "Khaled Org Test with parent",
+              "customId": "Khaled Org Test with parent",
+              "link": "Khaled Org Test with parent",
+              "phone": "202-333-4444",
+              "viewId": 609
+            }
+          ,
+          {
+            
+              "id": 57,
+              "name": "Nissan",
+              "customId": "5",
+              "viewId": 613
+            },{
+                "name":"Ahmad"  ,
+            "children": [
+              {
+                
+                  "id": 92,
+                  "name": "Org 3-12-18 e",
+                  "description": "Org 3-12-18 decs edit",
+                  "alias": "Org 3-12-18 a e",
+                  "customId": "Org 3-12-18 ide",
+                  "link": "http://Org 717e.com",
+                  "phone": "111-222-3333e",
+                  "viewId": 626
+                }
+              
+            ]}
+          
+        ]}
+      ,
+      {
+        
+          "id": 89,
+          "name": "Nael Organization Name Test 1",
+          "description": "Nael Organization Description Test 1",
+          "alias": "Nael Organization Alias Test 1",
+          "customId": "962795494843",
+          "link": "www.naelLinkTest1.com",
+          "phone": "+962795494843",
+          "viewId": 624
+        }
+      
+    ]}
+  ,
+  {
+    
+      "id": 58,
+      "name": "Lexus",
+      "customId": "6",
+      "viewId": 614
+    }
+  ,
+  {
+    
+      "id": 59,
+      "name": "Ct200",
+      "customId": "7",
+      "viewId": 615
+    }
+  ,
+  {
+    
+      "id": 61,
+      "name": "camry",
+      "customId": "8",
+      "viewId": 616
+    }
+  ,
+  {
+    
+      "id": 62,
+      "name": "Altima",
+      "customId": "9",
+      "viewId": 617
+    }
+  ,
+  {
+    
+      "id": 63,
+      "name": "Mercedes",
+      "customId": "22",
+      "viewId": 618
+    }
+  ,
+  {
+    
+      "id": 64,
+      "name": "Audi",
+      "customId": "33",
+      "viewId": 619
+    }
+  ,
+  {
+    
+      "id": 65,
+      "name": "Kia",
+      "customId": "44",
+      "viewId": 620
+    }
+  ,
+  {
+    
+      "id": 68,
+      "name": "America",
+      "customId": "10",
+      "viewId": 621
+    }
+  ,
+  {
+    
+      "id": 70,
+      "name": "rx450",
+      "customId": "12",
+      "phone": "77777777",
+      "viewId": 622
+    }
+  ,
+  {
+    
+      "id": 82,
+      "name": "KKtest123",
+      "description": "KKtest123",
+      "alias": "KKtest123",
+      "customId": "KKtest123",
+      "link": "KKtest123",
+      "phone": "+1 859 693 5525",
+      "viewId": 623
+    }
+  ,
+  {
+    
+      "id": 91,
+      "name": "org556",
+      "customId": "665id",
+      "viewId": 625
+    }
+  
+]
+}

@@ -1,0 +1,17 @@
+[
+	{ "SectionPercentage" : 5,
+	  "SectionName"   	  : "Section 1"	  
+ 	},
+ 	{ "SectionPercentage" : 15,
+	  "SectionName"      : "Section 2"	  
+ 	},
+ 	{ "SectionPercentage" : 29,
+	  "SectionName" 	  : "Section 3"	  
+ 	},
+ 	{ "SectionPercentage" : 34,
+	  "SectionName"   	  : "Section 4"	  
+ 	},
+ 	{ "SectionPercentage" : 17,
+	  "SectionName" 	  : "Section 5"	  
+ 	}
+]
