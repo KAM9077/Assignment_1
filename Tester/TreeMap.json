@@ -1,457 +1,369 @@
-                         
 [
-                         {
-        
-                            "label_short":"BC1",
-                            "label_long":"BC1",
-                            "size":0,
-                            "children":[
-                                                                                      
-                                {
-                                    
-                            
-                            "label_short":"BC1.1",
-                            "label_long":"BC1.1",
-                            "size":1 ,
-                            "children":[
-                                {
-                                    "label_short":"App1",
-                                    "label_long":"App1",
-                                    
-                                    "size":1
-                                },
-                                {
-                                    "label_short":"App2",
-                                    "label_long":"App2",
-                                    
-                                    "size":1
-                                },
-                                {
-                                    "label_short":"App3",
-                                    "label_long":"App3",
-                                    
-                                    "size":1
-                                },
-                                {
-                                    "label_short":"App4",
-                                    "label_long":"App3",
-                                    
-                                    "size":1
-                                },
-                                {
-                                    "label_short":"App5",
-                                    "label_long":"App1",
-                                    
-                                    "size":1
-                                },
-                                {
-                                    "label_short":"App6",
-                                    "label_long":"App2",
-                                    
-                                    "size":1
-                                },
-                                {
-                                    "label_short":"App7",
-                                    "label_long":"App2",
-                                    
-                                    "size":1
-                                },
-                                {
-                                    "label_short":"App5",
-                                    "label_long":"App1",
-                                    
-                                    "size":1
-                                }
-                                
-                                
-                                
-                            ]},
-                        
-                             {
-                            
-                            "label_short":"BC1.2",
-                            "label_long":"BC1.2",
-                            "size":0,
-                            "children":[
-                                {
-                                    "label_short":"App1",
-                                    "label_long":"App1",
-                                    
-                                    "size":1.2
-                                },
-                                {
-                                    "label_short":"App2",
-                                    "label_long":"App2",
-                                    
-                                    "size":1.2
-                                },
-                                {
-                                    "label_short":"App1",
-                                    "label_long":"App2",
-                                    
-                                    "size":1.2
-                                }
-                                
-                                
-                            ]},
-                        
-                                {
-                            
-                            "label_short":"BC1.3",
-                            "label_long":"BC1.3",
-                            "size":2.2,
-                            "children":[
-                                {
-                                    "label_short":"App1",
-                                    "label_long":"App1",
-                                    
-                                    "size":1.1
-                                },
-                                {
-                                    "label_short":"App2",
-                                    "label_long":"App2",
-                                    
-                                    "size":1.1
-                                },
-                                {
-                                    "label_short":"App3",
-                                    "label_long":"App3",
-                                    
-                                    "size":1.1
-                                },
-                               
-                                {
-                                    "label_short":"App3",
-                                    "label_long":"App3",
-                                    
-                                    "size":1.1
-                                }   
-                            ]},
-                              {
-                            
-                            "label_short":"BC1.4",
-                            "label_long":"BC1.4",
-                            "size":2.4,
-                            "children":[
-                                {
-                                    "label_short":"App2",
-                                    "label_long":"App2",
-                                    
-                                    "size":1.2
-                                }
-                            ]}, 
-                               {
-                            
-                            "label_short":"BC1.4",
-                            "label_long":"BC1.4",
-                            "size":2.4,
-                            "children":[
-                                {
-                                    "label_short":"App5",
-                                    "label_long":"App3",
-                                    
-                                    "size":1.2
-                                },
-                                {
-                                    "label_short":"App5",
-                                    "label_long":"App4",
-                                    
-                                    "size":1.2
-                                },
-                                {
-                                    "label_short":"App5",
-                                    "label_long":"App1",
-                                    
-                                    "size":1.2
-                                },
-                                {
-                                    "label_short":"App5",
-                                    "label_long":"App2",
-                                    
-                                    "size":1.2
-                                }
-                                
-                                    ]
-                               
-                                }
-                                
-                                
-                            ]
-                        },
-                                
-                                                        {
-       
-                           "label_short":"BC2",
-                           "label_long":"BC2",
-                           "size":0,
-                           "children":[{
-                           
-                           "label_short":"BC2.1",
-                           "label_long":"BC2.1",
-                           "size":1.2,
-                           "children":[
-                               {
-                                   "label_short":"App1",
-                                   "label_long":"App1",
-                                   
-                                   "size":1
-                               },
-                               {
-                                   "label_short":"App2",
-                                   "label_long":"App2",
-                                   
-                                   "size":1
-                               },
-                               {
-                                   "label_short":"App3",
-                                   "label_long":"App3",
-                                   
-                                   "size":1
-                               },
-                               {
-                                   "label_short":"App4",
-                                   "label_long":"App3",
-                                   
-                                   "size":1
-                               },
-                               {
-                                   "label_short":"App5",
-                                   "label_long":"App1",
-                                   
-                                   "size":1
-                               }
-                               
-                               
-                               
-                           ]},{
-                           
-                           "label_short":"BC2.2",
-                           "label_long":"BC2.2",
-                           "size":0,
-                           "children":[
-                               {
-                                   "label_short":"App1",
-                                   "label_long":"App1",
-                                   
-                                   "size":1.2
-                               },
-                               {
-                                   "label_short":"App2",
-                                   "label_long":"App2",
-                                   
-                                   "size":1.2
-                               },
-                               {
-                                   "label_short":"App1",
-                                   "label_long":"App2",
-                                   
-                                   "size":1.2
-                               }
-                               
-                               
-                           ]},
-                               {
-                           
-                           "label_short":"BC2.3",
-                           "label_long":"BC2.3",
-                           "size":0,
-                           "children":[
-                               {
-                                   "label_short":"App1",
-                                   "label_long":"App1",
-                                   
-                                   "size":1.1
-                               },
-                               {
-                                   "label_short":"App2",
-                                   "label_long":"App2",
-                                   
-                                   "size":1.1
-                               },
-                               {
-                                   "label_short":"App3",
-                                   "label_long":"App3",
-                                   
-                                   "size":1.1
-                               },
-                               {
-                                   "label_short":"App4",
-                                   "label_long":"App3",
-                                   
-                                   "size":1.1
-                               },
-                               {
-                                   "label_short":"App1",
-                                   "label_long":"App2",
-                                   
-                                   "size":1.1
-                               },
-                               {
-                                   "label_short":"App3",
-                                   "label_long":"App3",
-                                   
-                                   "size":1.1
-                               }
- 
-                           ]},
-                             {
-                           
-                           "label_short":"BC2.4",
-                           "label_long":"BC2.4",
-                           "size":2.4,
-                           "children":[
-                               {
-                                   "label_short":"App2",
-                                   "label_long":"App2",
-                                   
-                                   "size":1.2
-                               }
-                              
-                           ]}  
-                               
-                           ]
-                       },
-                        {
-       
-                           "label_short":"BC3",
-                           "label_long":"BC3",
-                           "size":0,
-                           "children":[{
-                           
-                           "label_short":"BC3.1",
-                           "label_long":"BC3.1",
-                           "size":2,
-                           "children":[
-                               
-                               {
-                                   "label_short":"App3",
-                                   "label_long":"App3",
-                                   
-                                   "size":1
-                               },
-                               {
-                                   "label_short":"App4",
-                                   "label_long":"App3",
-                                   
-                                   "size":1
-                               },
-                               {
-                                   "label_short":"App5",
-                                   "label_long":"App1",
-                                   
-                                   "size":1
-                               },
-                               {
-                                   "label_short":"App6",
-                                   "label_long":"App2",
-                                   
-                                   "size":1
-                               },
-                               {
-                                   "label_short":"App7",
-                                   "label_long":"App2",
-                                   
-                                   "size":1
-                               },
-                               {
-                                   "label_short":"App5",
-                                   "label_long":"App1",
-                                   
-                                   "size":1
-                               },
-                               {
-                                   "label_short":"App7",
-                                   "label_long":"App2",
-                                   
-                                   "size":1
-                               }
-                               
-                               
-                           ]},{
-                           
-                           "label_short":"BC3.2",
-                           "label_long":"BC3.2",
-                           "size":1.2,
-                           "children":[
-                               
-                               {
-                                   "label_short":"App2",
-                                   "label_long":"App2",
-                                   
-                                   "size":1.2
-                               },
-                               {
-                                   "label_short":"App1",
-                                   "label_long":"App2",
-                                   
-                                   "size":1.2
-                               }
-                               
-                               
-                           ]},
-                               {
-                           
-                           "label_short":"BC3.3",
-                           "label_long":"BC3.3",
-                           "size":1.1,
-                           "children":[
-                               {
-                                   "label_short":"App1",
-                                   "label_long":"App1",
-                                   
-                                   "size":1.1
-                               },
-                               {
-                                   "label_short":"App2",
-                                   "label_long":"App2",
-                                   
-                                   "size":1.1
-                               },
-                               {
-                                   "label_short":"App3",
-                                   "label_long":"App3",
-                                   
-                                   "size":1.1
-                               },
-                               {
-                                   "label_short":"App4",
-                                   "label_long":"App3",
-                                   
-                                   "size":1.1
-                               },                               
-                               {
-                                   "label_short":"App3",
-                                   "label_long":"App3",
-                                   
-                                   "size":1.1
-                               }
- 
-                           ]},
-                             {
-                           
-                           "label_short":"BC3.4",
-                           "label_long":"BC3.4",
-                           "size":1.2,
-                           "children":[
-                               {
-                                    "label_short":"App5",
-                                    "label_long":"App1",
-                                    
-                                    "size":1.2
-                                },
-                                {
-                                    "label_short":"App5",
-                                    "label_long":"App2",
-                                    
-                                    "size":1.2
-                                }
-                              
-                           ]}  
-                               
-                           ]
-                       }
-                       
-                       
-                       ]
-                    
-                        
+   {
+      "label_short":"BC1",
+      "label_long":"BC1",
+      "size":0,
+      "children":[
+         {
+            "label_short":"BC1.1",
+            "label_long":"BC1.1",
+            "size":1,
+            "children":[
+               {
+                  "label_short":"App1",
+                  "label_long":"App1",
+                  "size":1
+               },
+               {
+                  "label_short":"App2",
+                  "label_long":"App2",
+                  "size":1
+               },
+               {
+                  "label_short":"App3",
+                  "label_long":"App3",
+                  "size":1
+               },
+               {
+                  "label_short":"App4",
+                  "label_long":"App3",
+                  "size":1
+               },
+               {
+                  "label_short":"App5",
+                  "label_long":"App1",
+                  "size":1
+               },
+               {
+                  "label_short":"App6",
+                  "label_long":"App2",
+                  "size":1
+               },
+               {
+                  "label_short":"App7",
+                  "label_long":"App2",
+                  "size":1
+               },
+               {
+                  "label_short":"App5",
+                  "label_long":"App1",
+                  "size":1
+               }
+            ]
+         },
+         {
+            "label_short":"BC1.2",
+            "label_long":"BC1.2",
+            "size":0,
+            "children":[
+               {
+                  "label_short":"App1",
+                  "label_long":"App1",
+                  "size":1.2
+               },
+               {
+                  "label_short":"App2",
+                  "label_long":"App2",
+                  "size":1.2
+               },
+               {
+                  "label_short":"App1",
+                  "label_long":"App2",
+                  "size":1.2
+               }
+            ]
+         },
+         {
+            "label_short":"BC1.3",
+            "label_long":"BC1.3",
+            "size":2.2,
+            "children":[
+               {
+                  "label_short":"App1",
+                  "label_long":"App1",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App2",
+                  "label_long":"App2",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App3",
+                  "label_long":"App3",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App3",
+                  "label_long":"App3",
+                  "size":1.1
+               }
+            ]
+         },
+         {
+            "label_short":"BC1.4",
+            "label_long":"BC1.4",
+            "size":2.4,
+            "children":[
+               {
+                  "label_short":"App2",
+                  "label_long":"App2",
+                  "size":1.2
+               }
+            ]
+         },
+         {
+            "label_short":"BC1.4",
+            "label_long":"BC1.4",
+            "size":2.4,
+            "children":[
+               {
+                  "label_short":"App5",
+                  "label_long":"App3",
+                  "size":1.2
+               },
+               {
+                  "label_short":"App5",
+                  "label_long":"App4",
+                  "size":1.2
+               },
+               {
+                  "label_short":"App5",
+                  "label_long":"App1",
+                  "size":1.2
+               },
+               {
+                  "label_short":"App5",
+                  "label_long":"App2",
+                  "size":1.2
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "label_short":"BC2",
+      "label_long":"BC2",
+      "size":0,
+      "children":[
+         {
+            "label_short":"BC2.1",
+            "label_long":"BC2.1",
+            "size":1.2,
+            "children":[
+               {
+                  "label_short":"App1",
+                  "label_long":"App1",
+                  "size":1
+               },
+               {
+                  "label_short":"App2",
+                  "label_long":"App2",
+                  "size":1
+               },
+               {
+                  "label_short":"App3",
+                  "label_long":"App3",
+                  "size":1
+               },
+               {
+                  "label_short":"App4",
+                  "label_long":"App3",
+                  "size":1
+               },
+               {
+                  "label_short":"App5",
+                  "label_long":"App1",
+                  "size":1
+               }
+            ]
+         },
+         {
+            "label_short":"BC2.2",
+            "label_long":"BC2.2",
+            "size":0,
+            "children":[
+               {
+                  "label_short":"App1",
+                  "label_long":"App1",
+                  "size":1.2
+               },
+               {
+                  "label_short":"App2",
+                  "label_long":"App2",
+                  "size":1.2
+               },
+               {
+                  "label_short":"App1",
+                  "label_long":"App2",
+                  "size":1.2
+               }
+            ]
+         },
+         {
+            "label_short":"BC2.3",
+            "label_long":"BC2.3",
+            "size":0,
+            "children":[
+               {
+                  "label_short":"App1",
+                  "label_long":"App1",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App2",
+                  "label_long":"App2",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App3",
+                  "label_long":"App3",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App4",
+                  "label_long":"App3",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App1",
+                  "label_long":"App2",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App3",
+                  "label_long":"App3",
+                  "size":1.1
+               }
+            ]
+         },
+         {
+            "label_short":"BC2.4",
+            "label_long":"BC2.4",
+            "size":2.4,
+            "children":[
+               {
+                  "label_short":"App2",
+                  "label_long":"App2",
+                  "size":1.2
+               }
+            ]
+         }
+      ]
+   },
+   {
+      "label_short":"BC3",
+      "label_long":"BC3",
+      "size":0,
+      "children":[
+         {
+            "label_short":"BC3.1",
+            "label_long":"BC3.1",
+            "size":2,
+            "children":[
+               {
+                  "label_short":"App3",
+                  "label_long":"App3",
+                  "size":1
+               },
+               {
+                  "label_short":"App4",
+                  "label_long":"App3",
+                  "size":1
+               },
+               {
+                  "label_short":"App5",
+                  "label_long":"App1",
+                  "size":1
+               },
+               {
+                  "label_short":"App6",
+                  "label_long":"App2",
+                  "size":1
+               },
+               {
+                  "label_short":"App7",
+                  "label_long":"App2",
+                  "size":1
+               },
+               {
+                  "label_short":"App5",
+                  "label_long":"App1",
+                  "size":1
+               },
+               {
+                  "label_short":"App7",
+                  "label_long":"App2",
+                  "size":1
+               }
+            ]
+         },
+         {
+            "label_short":"BC3.2",
+            "label_long":"BC3.2",
+            "size":1.2,
+            "children":[
+               {
+                  "label_short":"App2",
+                  "label_long":"App2",
+                  "size":1.2
+               },
+               {
+                  "label_short":"App1",
+                  "label_long":"App2",
+                  "size":1.2
+               }
+            ]
+         },
+         {
+            "label_short":"BC3.3",
+            "label_long":"BC3.3",
+            "size":1.1,
+            "children":[
+               {
+                  "label_short":"App1",
+                  "label_long":"App1",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App2",
+                  "label_long":"App2",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App3",
+                  "label_long":"App3",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App4",
+                  "label_long":"App3",
+                  "size":1.1
+               },
+               {
+                  "label_short":"App3",
+                  "label_long":"App3",
+                  "size":1.1
+               }
+            ]
+         },
+         {
+            "label_short":"BC3.4",
+            "label_long":"BC3.4",
+            "size":1.2,
+            "children":[
+               {
+                  "label_short":"App5",
+                  "label_long":"App1",
+                  "size":1.2
+               },
+               {
+                  "label_short":"App5",
+                  "label_long":"App2",
+                  "size":1.2
+               }
+            ]
+         }
+      ]
+   }
+]
