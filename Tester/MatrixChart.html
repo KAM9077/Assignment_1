@@ -1,0 +1,231 @@
+<html>
+<meta charset="utf-8">
+
+ <head>
+  <title> Tree map layout</title>
+ </head>
+
+<style>
+
+.a1 {
+  fill: #0870b0;
+  /*opacity: 0.3;*/
+  /*stroke: white;*/
+  stroke-width: 5px
+}
+.a2 {
+  fill: #b03208;
+  /*opacity: 0.3;*/
+  /*stroke: white;*/
+  stroke-width: 5px    
+}.a3 {
+  fill: #a259a5;
+  /*opacity: 0.3;*/
+  /*stroke: white;*/
+  stroke-width: 5px
+}
+.location {
+  fill: #2f92ee;
+  /*opacity: 0.3;*/
+  /*stroke: white;*/
+  stroke-width: 5px
+}
+.BC {
+  fill: #333333;
+  /*opacity: 0.3;*/
+  /*stroke: white;*/
+  stroke-width: 5px
+}
+text {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 18px;
+}
+g text {
+  fill: yellow;
+  font-size: 18px; 
+}
+</style>
+
+<body>
+  <div id="content"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+  <script>
+     
+d3.json("flare.json", function(error, data) {
+    var k = [];    
+    var ratios = [1];
+    var rootNode = [];
+    var Node0 = {};
+    var Node1 = {};
+    var ArrNode0 = [];
+    var ArrNode1 = [];
+    var ArrNode0x = [];
+    var ArrNode1x = [];
+    
+    for(var i=0;i<data.length;i++){        
+        rootNode[i] = d3.hierarchy(data[i])
+        rootNode[i].each(function(d){ if(d.depth == 1) k.push(d.children); })
+        rootNode[i].each(function(d) {
+        if(d.depth==0 && !Node0.hasOwnProperty(d.data.Name))
+            Node0[d.data.Name] = 0;
+        if(d.depth==1 && !Node1.hasOwnProperty(d.data.Name))
+            Node1[d.data.Name] = 0;
+        });                      
+    }   
+    
+    for(var i=0;i<data.length;i++){
+        for(var b in Node1){
+            for(var r in Node0){
+                var m = 0
+                rootNode[i].each(function(d){
+                    if(d.depth !== 0 && d.depth !== 1){
+                        if(d.parent.parent.data.Name == r && d.parent.data.Name == b){
+                            m+=1;
+                        }
+                    }   
+                })
+                ArrNode0.push({"BC":r,"value":Node0[r],"x":0})
+                if (Node1[b]<m)
+                    Node1[b]=m;
+            } 
+        ArrNode1.push({"location":b,"value":Node1[b],"x":0})   
+        }     
+    }
+
+    ArrNode1=ArrNode1.splice(ArrNode1.length-3,ArrNode1.length-1)
+    ArrNode0=ArrNode0.splice(ArrNode0.length-3,ArrNode0.length-1)
+
+    for(var i=0;i<ArrNode1.length;i++){
+        if(i!== 0){
+        ArrNode1[i].x=ArrNode1[i-1].value+ArrNode1[i-1].x;
+        ArrNode1x.push(ArrNode1[i].location,ArrNode1[i].x);
+        }
+        else{
+            ArrNode1[i].x = 4;
+            ArrNode1x.push(ArrNode1[i].location,ArrNode1[i].x);
+        }
+    } 
+    
+    for(var i=0;i<ArrNode1.length;i++){
+        ArrNode0[i].x=200*(i+1);
+        ArrNode0x.push(ArrNode0[i].BC,ArrNode0[i].x);
+    }
+
+d3.select('#content')
+     .attr('width', (ArrNode0.length+1)*205+ 'px')
+     .attr('height', (ArrNode1[ArrNode1.length-1].x*32)+150 + 'px');
+        
+    var nodes3 = d3.select('#content')
+        .append('svg')
+        .attr('width', (ArrNode0.length+1)*205 + 'px')
+        .attr('height', (ArrNode1[ArrNode1.length-1].x*32)+130 + 'px')
+        .append('g')
+        .attr('transform', 'translate(0 , 20)')
+        .append('rect')
+        .attr('width', function(d,i) { return (ArrNode0.length+1)*205})
+        .attr('height',function(d) { return (ArrNode1[ArrNode1.length-1].x*32)+100})
+        .attr('rx', 5)
+        .attr('ry', 5)
+        .attr("fill","#dddddd")
+
+    var nodes1 = d3.select('svg')
+        .append('g')
+        .attr('transform', 'translate(10 , 15)')
+        .selectAll('g')
+        .data(ArrNode1)
+        .enter()
+        .append('g')                               
+        .attr('transform', function(d,i) {
+                return 'translate(' + [0,d.x*32] + ')'; });
+    nodes1
+        .append('rect')
+        .attr("class", function(d) {return "location"})
+        .attr('width', function(d,i) { return 200})
+        .attr('height',function(d) { return d.value*32-5})
+        .attr('rx', 5)
+        .attr('ry', 5)
+    nodes1
+        .append('text')
+        .attr('dx', function(d) { return 60;})
+        .attr('dy', function(d,i) { return (ArrNode1[i].value*32)/2; })
+        .text(function(d) {
+          return d.location;
+        });
+    console.log(ArrNode1)         
+    var nodes0 = d3.select('svg')
+        .append('g')
+        .attr('transform', 'translate(10 , 20)')
+        .selectAll('g')
+        .data(ArrNode0)
+        .enter()
+        .append('g')                               
+        .attr('transform', function(d,i) {
+                return 'translate(' + [d.x+5,15] + ')'; });
+    nodes0
+        .append('rect')
+        .attr("class", function(d) {return "BC"})
+        .attr('width', function(d,i) { return 195})
+        .attr('height',function(d) { return 100})
+        .attr('rx', 5)
+        .attr('ry', 5)
+    nodes0
+        .append('text')
+        .attr('dx', function(d) { return 80;})
+        .attr('dy', function(d) { return 55; })
+        .text(function(d) {
+          return d.BC;
+        });   
+    for(var i=0;i<k.length;i++){
+        var nodes = d3.select('svg')
+            .append('g')
+            .attr('transform', 'translate(10 , 15)')
+            .selectAll('g')
+            .data(k[i])
+            .enter()
+            .append('g')                              
+            .attr('transform', function(d,i) {
+                    return 'translate(' + [ArrNode0x[ArrNode0x.indexOf(d.parent.parent.data.Name)+1]+5,
+                                          (i*31)+ArrNode1x[ArrNode1x.indexOf(d.parent.data.Name)+1]*32] 
+                                        + ')'; });
+        nodes
+            .append('rect')
+            .attr("class", function(d) {return d.data.Phases})
+            .attr('width', function(d,i) { return 195})
+            .attr('height',function(d) { return 28})
+            .attr('rx', 5)
+            .attr('ry', 5)
+        nodes
+            .append('text')
+            .attr('dx', function(d) { return 83;})
+            .attr('dy', function(d) { return 20; })
+            .text(function(d) {
+              return d.data.Name;
+            });
+        }
+//    nodes1
+//        .on('mouseover', function(){
+//            console.log(d3.select(this).attr('class'))
+//            if(d3.select(this).attr('class') !== "par3"){     
+//             d3.select(this).select('rect')
+//             .attr("stroke","white");
+//             } 
+//        })
+//        .on('mouseout', function(){
+//            if(d3.select(this).attr('class') !== "par3"){
+//             d3.select(this).select('rect')
+//             .attr("stroke", d3.select(this).select('rect').attr("fill"));
+//             }
+//        })
+//        .on('click', function(d) {
+//           console.log(d3.select(this))
+//         d3.select(this).select('rect')
+//         .attr("stroke","yellow"); 
+//        });                    
+//    }
+ 
+});
+
+  </script>
+</body>
+</html>

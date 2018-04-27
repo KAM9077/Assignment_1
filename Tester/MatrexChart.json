@@ -3,54 +3,44 @@
     {       
     "Name":"BC1",
     "Phases":"",
-    "size":0,
     "children":[                                                                                      
                     {                                                                
                     "Name":"Location1",
                     "Phases":"",
-                    "size":1 ,
                     "children":[
                                 {
                                     "Name":"App1",
-                                    "Phases":"App1",
-                                    "size":1
+                                    "Phases":"a1"
                                 },
                                 {
                                     "Name":"App2",
-                                    "Phases":"App2",
-                                    "size":1
+                                    "Phases":"a2"
                                 },
                                 {
                                     "Name":"App3",
-                                    "Phases":"App3",
-                                    "size":1
+                                    "Phases":"a1"
                                 },
                                 {
                                     "Name":"App4",
-                                    "Phases":"App3",
-                                    "size":1
+                                    "Phases":"a3"
                                 }                                                                                             
                                 ]
                     },                       
                     {                            
                     "Name":"Location2",
                     "Phases":"",
-                    "size":0,
                     "children":[
                                 {
                                     "Name":"App1",
-                                    "Phases":"App1",                                  
-                                    "size":1.2
+                                    "Phases":"a3"                                  
                                 },
                                 {
                                     "Name":"App2",
-                                    "Phases":"App2",                                    
-                                    "size":1.2
+                                    "Phases":"a3"                                    
                                 },
                                 {
                                     "Name":"App1",
-                                    "Phases":"App2",                                    
-                                    "size":1.2
+                                    "Phases":"a1"                                   
                                 }                                                               
                                ]
                     }                                                          
@@ -59,55 +49,61 @@
     {
     "Name":"BC2",
     "Phases":"",
-    "size":0,
     "children":[
                     {                           
                     "Name":"Location1",
                     "Phases":"",
-                    "size":1.2,
                     "children":[
                                {
                                    "Name":"App1",
-                                   "Phases":"App1",
-                                   "size":1
+                                   "Phases":"a2"
                                },
                                {
                                    "Name":"App2",
-                                   "Phases":"App2",
-                                   "size":1
+                                   "Phases":"a3"
+                               },
+                               {
+                                   "Name":"App2",
+                                   "Phases":"a2"
                                },
                                {
                                    "Name":"App3",
-                                   "Phases":"App3",
-                                   "size":1
+                                   "Phases":"a1"
                                },
                                {
                                    "Name":"App4",
-                                   "Phases":"App3",
-                                   "size":1
+                                   "Phases":"a1"
                                }                             
                                ]
                     },
                     {                           
                     "Name":"Location2",
                     "Phases":"",
-                    "size":0,
                     "children":[
                                {
                                    "Name":"App1",
-                                   "Phases":"App1",
-                                   "size":1.2
+                                   "Phases":"a3"
                                },
                                {
                                    "Name":"App2",
-                                   "Phases":"App2",
-                                   "size":1.2
+                                   "Phases":"a3"
                                },
                                {
                                    "Name":"App1",
-                                   "Phases":"App2",                                   
-                                   "size":1.2
-                               }                                                              
+                                   "Phases":"a2"                                  
+                               },
+                               {
+                                   "Name":"App1",
+                                   "Phases":"a1"
+                               },
+                               {
+                                   "Name":"App2",
+                                   "Phases":"a3"
+                               },
+                               {
+                                   "Name":"App1",
+                                   "Phases":"a2"                                   
+                               }   
                                ]
                     }
                 ]
@@ -115,76 +111,62 @@
     {
     "Name":"BC3",
     "Phases":"",
-    "size":0,
     "children":[    
                     {
                     "Name":"Location1",
-                    "Phases":"BC3.1",
-                    "size":2,
+                    "Phases":"",
                     "children":[
                                {
                                    "Name":"App3",
-                                   "Phases":"App3",
-                                   "size":1
+                                   "Phases":"a1"
                                },
                                {
                                    "Name":"App4",
-                                   "Phases":"App3",
-                                   "size":1
+                                   "Phases":"a3"
                                },
                                {
                                    "Name":"App5",
-                                   "Phases":"App1",
-                                   "size":1
+                                   "Phases":"a2"
                                },
                                {
                                    "Name":"App6",
-                                   "Phases":"App2",
-                                   "size":1
+                                   "Phases":"a1"
                                }  
                                ]
                     },
                     {
-                    "Name":"BC3.2",
-                    "Phases":"BC3.2",
-                    "size":1.2,
+                    "Name":"Location2",
+                    "Phases":"",
                     "children":[
                                {
                                    "Name":"App2",
-                                   "Phases":"App2",
-                                   "size":1.2
+                                   "Phases":"a2"
                                },
                                {
                                    "Name":"App1",
-                                   "Phases":"App2",
-                                   "size":1.2
+                                   "Phases":"a2"
                                },
                                {
                                    "Name":"App3",
-                                   "Phases":"App2",
-                                   "size":1.2
+                                   "Phases":"a3"
                                }
                                ]
                     },
                     {
-                    "Name":"BC3.3",
-                    "Phases":"BC3.3",
-                    "size":1.1,
+                    "Name":"Location3",
+                    "Phases":"",
                     "children":[
                                {
                                    "Name":"App1",
-                                   "Phases":"App1",
-                                   "size":1.1
+                                   "Phases":"a1"
                                },
                                {
                                    "Name":"App2",
-                                   "Phases":"App2",
-                                   "size":1.1
+                                   "Phases":"a2"
                                },
                                {
                                    "Name":"App3",
-                                   "Phases":"App3",
-                                   "size":1.1
+                                   "Phases":"a3"
                                }
                                ]
                     }                                
