@@ -2,12 +2,10 @@
 <meta charset="utf-8">
 <body>
 <style>
-
-
+    
     .description{
     font-size: 20;    
     }
-
 
     .links line {
   
@@ -25,10 +23,13 @@
 
 </style>
 <section></section>
-<div class="description" width="100" height="200"></div>
+<div class="description" width="100" height="200">
+    <input class="zoominput">
+</div>
 <svg width="1670" height="900"></svg>
 <script src="https://d3js.org/d3.v4.min.js"></script>
-<!--<script src="http://d3js.org/d3-selection-multi.v1.js"></script>-->
+<script src="http://d3js.org/d3-selection-multi.v1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.js"></script>
 <script>
 
 
@@ -36,9 +37,12 @@ var svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height");
 
- svg.append('g')
-    .append('text')
-    .attr('class','description2');
+svg.append('g')
+   .append('text')
+   .attr('class','description2');
+
+var g = svg.append("g")
+    .attr("class", "everything");
     
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 var k = [1,-1];
@@ -55,7 +59,7 @@ var simulation = d3.forceSimulation()
 
 d3.json("Bubbles.json", function(error, graph) {
   if (error) throw error;
-svg.append("defs").selectAll("marker")
+g.append("defs").selectAll("marker")
     .data(graph.marker)
     .enter().append("marker")
     .attr("id", function(d) { return d;})
@@ -69,31 +73,53 @@ svg.append("defs").selectAll("marker")
     .attr("d", "M0,-5L10,0L0,5")
     .attr('fill', function(d) { return color(3)});
 
-  var link = svg.append("g")
+  var link = g.append("g")
     .attr("class", "links")
     .selectAll("line")
     .data(graph.links)
     .enter().append("line")
+    .attr("id", function(d,i){return d.target;})
     .attr("stroke", function(d) { return color(d.target-3); })
     .attr("stroke-width", function(d) { return Math.sqrt(d.id); })
     .attr("marker-end", function(d) { return "url(#" + d.target + ")"; });
 
-
-  var node = svg.append("g")
+  var node = g.append("g")
     .attr("class", "nodes")
     .selectAll(".node")
     .data(graph.nodes)
     .enter().append("g")
     .attr("class", "node")
+    .attr("id", function(d,i){return d.id;})
       .call(d3.drag()
         .on("start", dragstarted)
         .on("drag", dragged)
         .on("end", dragended))
-        .on('mouseover', function() {
+        .on('mouseover', function(d) {var m=link._groups[0],n=node._groups[0];                              
+                                      for(var i=0;i<m.length;i++){
+                                          if(m[i].__data__.source.id == d.id || m[i].__data__.target.id == d.id){
+                                              for(var a=0;a<n.length;a++){
+                                                if(n[a].__data__.id == m[i].__data__.source.id ||
+                                                   n[a].__data__.id == m[i].__data__.target.id){
+                                                   n[a].querySelector(".circle1").attributes.fill.value = "#d0e2ff";
+                                                   };  
+                                              }
+                                              m[i].attributes.stroke.value="#d0e2ff";
+                                              
+                                          }}
           d3.select(this).select('.circle1')
-          .attr("fill","#33C8FF"); 
+          .attr("fill","#d0e2ff"); 
         })
-        .on('mouseout', function() {
+        .on('mouseout',  function(d) {var m=link._groups[0],n=node._groups[0];
+                                     for(var i=0;i<m.length;i++){
+                                         if(m[i].__data__.source.id == d.id || m[i].__data__.target.id == d.id){
+                                           for(var a=0;a<n.length;a++){
+                                             if(n[a].__data__.id == m[i].__data__.source.id ||
+                                                n[a].__data__.id == m[i].__data__.target.id){
+                                                n[a].querySelector(".circle1").attributes.fill.value = color(n[a].__data__.id-3);
+                                                };  
+                                           }
+                                            m[i].attributes.stroke.value = color(m[i].__data__.target.id-3);
+                                    }}
           d3.select(this).select('.circle1')
           .attr("fill", function(d) { return color(d.id-3); });
         })
@@ -114,7 +140,6 @@ svg.append("defs").selectAll("marker")
       .attr("text-anchor", "middle")
       .text(function(d) { return d.id; });
       
-
   simulation
       .nodes(graph.nodes)
       .on("tick", ticked);
@@ -136,6 +161,29 @@ svg.append("defs").selectAll("marker")
   }
 });
 
+var zoom = d3.zoom()
+    .scaleExtent([0.05, 7])
+    .on("zoom", zoomed);
+    zoom(svg)
+
+function zoomed() {
+    g.attr("transform", d3.event.transform);
+    slider.property("value", d3.event.transform.k);
+}
+
+var slider = d3.select(".zoominput")
+    .datum({})
+    .attr("type", "range")
+    .attr("value", 1)
+    .attr("min", zoom.scaleExtent()[0])
+    .attr("max", zoom.scaleExtent()[1])
+    .attr("step", (zoom.scaleExtent()[1] - zoom.scaleExtent()[0]) / 100)
+    .on("input", slided);
+    
+function slided(d) {
+    zoom.scaleTo(svg,d3.select(this).property("value"));
+}
+
 function dragstarted(d) {
   if (!d3.event.active) simulation.alphaTarget(2).restart();
   d.fx = d.x;
@@ -152,17 +200,6 @@ function dragended(d) {
   d.fx = null;
   d.fy = null;
 }
-//var relation = function (array){
-//    var a=[]
-//    for(var i=0;i<=array.length;i++ ){
-//        console.log(array[i])
-//        if(array[i].source !== "" && array[i].target !== ""){
-//            
-//            a.push(array[i]);
-//        }
-//    }
-//    return a;
-//}
 
 </script>
 </body>
