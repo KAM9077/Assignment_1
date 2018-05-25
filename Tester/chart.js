@@ -1,8 +1,16 @@
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 d3.custom = {};
 d3.custom.chart = {};
 d3.custom.layout = {};
 
-d3.custom.chart.flow = function() {
+d3.custom.chart.flow = function(data) {
+//    var data = d3.hierarchy(d)
+//console.log("data",data)
+//console.log("d",d)
 
     // public variables with default settings
     var margin = {top:10, right:10, bottom:10, left:10}, // defaults
@@ -16,33 +24,39 @@ d3.custom.chart.flow = function() {
         root,
         rootNode,
         scrollbarAffordance;
-
+//console.log("root",root)
     var flow = d3.custom.layout.flow()
         .margin(margin)
         .padding(padding)
-        .nodeWidth(110)
-        .nodeHeight(30)
+        .nodeWidth(75)
+        .nodeHeight(35)
         .containerHeight(20);
-
-    function chart(selection) {
-        rootNode = selection.node();
-
-        function debounce(fn, timeout) {
-            var timeoutID = -1;
-            return function() {
-                if (timeoutID > -1) {
-                    window.clearTimeout(timeoutID);
-                }
-                timeoutID = window.setTimeout(fn, timeout);
-            }
-        }
+//console.log("d",d)
+    function chart(data) {
+        rootNode = d3.hierarchy(data).descendants();
+console.log("data",data)
+console.log("rootNode",rootNode)
+//        function debounce(fn, timeout) {
+//            var timeoutID = -1;
+//            return function() {
+//                if (timeoutID > -1) {
+//                    window.clearTimeout(timeoutID);
+//                }
+//                timeoutID = window.setTimeout(fn, timeout);
+//            }
+//        }
 
         function resize(selectedNode) {
-            var domContainerWidth  = (parseInt(d3.select(rootNode).style("width"))),
-                domContainerHeight = (parseInt(d3.select(rootNode).style("height"))),
+            console.log("d3.select(this)",d3.select(this)._groups[0][0].visualViewport.height)
+            var domContainerWidth  = (parseInt(d3.select(this)._groups[0][0].visualViewport.width)),
+                domContainerHeight = (parseInt(d3.select(this)._groups[0][0].visualViewport.height)),
                 flowWidth = 0;
 
+//                console.log("root",root)
+
             if (root.height > domContainerHeight) {
+//                console.log("root",root)
+
                 scrollbarAffordance = 0;
             } else {
                 scrollbarAffordance = 0;
@@ -53,27 +67,27 @@ d3.custom.chart.flow = function() {
 
             chart.update(selectedNode);
 
-            svg.transition().duration(transitionDuration)
-                .attr("width", function(d) {
-                    return domContainerWidth;
-                })
-                .attr("height", function(d) {
-                    return d.height + margin.top + margin.bottom;
-                })
-                .select(".chartGroup")
-                .attr("width", function(d) {
-                    return flowWidth;
-                })
-                .attr("height", function(d) {
-                    return d.height + margin.top + margin.bottom;
-                })
-                .select(".background")
-                .attr("width", function(d) {
-                    return flowWidth;
-                })
-                .attr("height", function(d) {
-                    return d.height + margin.top + margin.bottom;
-                });
+//            svg.transition().duration(transitionDuration)
+//                .attr("width", function(d) {
+//                    return domContainerWidth;
+//                })
+//                .attr("height", function(d) {
+//                    return d.height + margin.top + margin.bottom;
+//                })
+//                .select(".chartGroup")
+//                .attr("width", function(d) {
+//                    return flowWidth;
+//                })
+//                .attr("height", function(d) {
+//                    return d.height + margin.top + margin.bottom;
+//                })
+//                .select(".background")
+//                .attr("width", function(d) {
+//                    return flowWidth;
+//                })
+//                .attr("height", function(d) {
+//                    return d.height + margin.top + margin.bottom;
+//                });
         }
 
 
@@ -82,10 +96,11 @@ d3.custom.chart.flow = function() {
         });
 
 
-        selection.each(function(arg) {
+        rootNode.forEach(function(arg) {
             root = arg;
-            container = d3.select(this);
-
+//            console.log("root",root)
+            container = d3.select("#container");
+//            console.log("container",container)
             var i = 0;
 
             if (!svg) {
@@ -94,16 +109,16 @@ d3.custom.chart.flow = function() {
                     .attr("transform", "translate(0, 0)")
                     .style("shape-rendering", "auto") // shapeRendering options; [crispEdges|geometricPrecision|optimizeSpeed|auto]
                     .style("text-rendering", "auto"); // textRendering options;  [auto|optimizeSpeed|optimizeLegibility|geometricPrecision]
-                chartGroup = svg.append("svg:g")
+                chartGroup = svg.append("g")
                     .attr("class", "chartGroup");
-                chartGroup.append("svg:rect")
+                chartGroup.append("rect")
                     .attr("class", "background");
             }
 
 
             chart.update = function(source) {
-                var nodes = flow(root);
-
+//                var nodes = flow(root);
+//                console.log(source)
                 function color(d) {
                     return d._children ? "#3182bd" : d.children ? "#c6dbef" : "#fd8d3c";
                 }
@@ -124,7 +139,7 @@ d3.custom.chart.flow = function() {
                 var node = chartGroup.selectAll("g.node")
                     .data(nodes, function(d) { return d.id || (d.id = ++i); });
 
-                var nodeEnter = node.enter().append("svg:g")
+                var nodeEnter = node.enter().append("g")
                     .attr("class", "node")
                     .attr("transform", function(d) {
                         return "translate(" + source.x + "," + source.y + ")";
@@ -132,7 +147,7 @@ d3.custom.chart.flow = function() {
                     .style("opacity", 1e-6);
 
                 // Enter any new nodes at the parent's previous position.
-                nodeEnter.append("svg:rect")
+                nodeEnter.append("rect")
                     .attr("class", "background")
                     .attr("height", function(d) { return d.height; })
                     .attr("width", function(d) { return d.width; })
@@ -148,13 +163,13 @@ d3.custom.chart.flow = function() {
                             .attr("transform", function(d) {
                                 return d._children ? "translate(8,14)rotate(225)" : "translate(5,8)rotate(315)";
                             });
-                        d3.select(this).append("svg:text")
+                        d3.select(this).append("text")
                             .attr("class", "label")
                             .attr("dy", 13)
                             .attr("dx", 17)
                             .text(function(d) { return d.name; });
                     } else {
-                        d3.select(this).append("svg:text")
+                        d3.select(this).append("text")
                             .attr("class", "label")
                             .attr("dy", 13)
                             .attr("dx", 4)

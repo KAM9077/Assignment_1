@@ -1,20 +1,27 @@
-d3.custom.layout.flow = function() {
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
-    var hierarchy = d3.layout.hierarchy().sort(null).value(null),
+d3.custom.layout.flow = function(data) {
+
+    var hierarchy = d3.hierarchy,
         nodeWidth = 125,
-        nodeHeight = 50,
-        containerHeight = 20,
+        nodeHeight = 300,
+        containerHeight = 100,
         width = 900,
         height = 0,
         padding = {top:20, left:10, bottom:10, right:10},
         margin = {top:10, left:10, bottom:10, right:10};
 
-    function flow(d, i) {
-        var nodes = hierarchy.call(this, d, i),
-            root = nodes[0];
-
+    function flow(data) {
+        var nodes = hierarchy(data),
+            root = nodes;
+//console.log("nodes",nodes)
 
         function firstWalk(node) {
+//            console.log(node)
             var children = node.children;
             if (children && children.length > 0) {
                 var n = children.length,
@@ -35,6 +42,7 @@ d3.custom.layout.flow = function() {
 
 
         function secondWalk(node) {
+//            console.log(node)
             var children = node.children;
             if (children && children.length > 0) {
                 var i = -1,
