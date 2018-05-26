@@ -44,10 +44,9 @@ svg.append('g')
    .append('text')
    .attr('class','description2');
 
-var text =  svg.append('g')
-
 var g = svg.append("g")
-    .attr("class", "everything");
+           .attr("class", "everything");
+var text =  g.append('g')
     
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 var k = [1,-1];
