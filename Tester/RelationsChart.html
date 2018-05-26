@@ -2,9 +2,12 @@
 <meta charset="utf-8">
 <body>
 <style>
+    .title{
+     font-size: 30px;   
+    }
     
     .description{
-    font-size: 20;    
+    font-size: 25px;    
     }
 
     .links line {
@@ -41,6 +44,8 @@ svg.append('g')
    .append('text')
    .attr('class','description2');
 
+var text =  svg.append('g')
+
 var g = svg.append("g")
     .attr("class", "everything");
     
@@ -62,7 +67,20 @@ var target=[],
     
 d3.json("Bubbles.json", function(error, graph) {
   if (error) throw error;
-  
+
+ text.append('text')
+     .attr("class", "title")
+     .text(graph.title1)   
+     .attr("transform",'translate(  135 , 130 )')  
+ text.append('text')
+     .attr("class", "title")
+     .text(graph.title2)   
+     .attr("transform",'translate(  435 , 130 )')   
+ text.append('text')
+     .attr("class", "title")
+     .text(graph.title3)   
+     .attr("transform",'translate(  715 , 130 )') 
+        
   for(var i=0;i<Math.max(graph.links1.length,graph.links2.length);i++){
    if(graph.links1[i] !== undefined && source1.indexOf(graph.links1[i].source)==-1)   
    source1.push(graph.links1[i].source)
@@ -141,14 +159,12 @@ d3.json("Bubbles.json", function(error, graph) {
         })
         .on('click', function(d) {
           d3.select('.description')
-          .text(d.id).attr("transform",'translate(  50 , 50 )'); 
+          .text(d.name).attr("transform",'translate(  50 , 50 )'); 
         });
   
-//  node.append("rect")
-//      .attr("width", function(d){return d.id+15;})
-//      .attr("height", function(d){return d.id+15;})
-//      .attr("fill", function(d) { return color(d.id+3); })
-//      .attr("class", "circle2")
+//  node.select(".everything")
+//      .append("text")
+//      .text("Relation");
 //      .attr("transform","translate(-75 ,-30)");
   node.append("rect")
       .attr("width", 150)
