@@ -49,8 +49,6 @@ var color = d3.scaleOrdinal(d3.schemeCategory10);
 var k = [1,-1];
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(300).strength(0.07))
-//    .force("charge", d3.forceManyBody(-5000))
-//    .force("center.x", d3.forceCenter(300))
     .force(1,d3.forceCenter(500,500))
     .force("y", d3.forceX().x(function(d){ return d.type=="rect"?500:100;}).strength(0.04))
     .force("x", d3.forceY().y(function(d){ return d.type=="rect"?500:100;}).strength(0.04))
