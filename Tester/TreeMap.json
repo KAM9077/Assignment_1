@@ -434,3 +434,171 @@
       ]
    }
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "id" : 1,
+    "name" : "flare",
+    "children" : [{
+        "id" : 2,
+        "name" : "analytics",
+        "children" : [{
+            "id" : 3,
+            "name" : "cluster",
+            "children" : [{
+                "id" : 4,
+                "name" : "Agglomerative",
+                "value" : 3938
+            },
+                {
+                    "id" : 5,
+                    "name" : "Community",
+                    "value" : 3812
+                },
+                {
+                    "id" : 6,
+                    "name" : "Hierarchical",
+                    "value" : 6714
+                },
+                {
+                    "id" : 7,
+                    "name" : "Merge",
+                    "value" : 743
+                }]
+        },
+            {
+                "id" : 8,
+                "name" : "graph",
+                "children" : [{
+                    "id" : 9,
+                    "name" : "Betweenness",
+                    "value" : 3534
+                },
+                    {
+                        "id" : 10,
+                        "name" : "Link",
+                        "value" : 5731
+                    },
+                    {
+                        "id" : 11,
+                        "name" : "MaxFlow",
+                        "value" : 7840
+                    },
+                    {
+                        "id" : 12,
+                        "name" : "Shortest",
+                        "value" : 5914
+                    },
+                    {
+                        "id" : 13,
+                        "name" : "SpanningTree",
+                        "value" : 3416
+                    }]
+            },
+            {
+                "id" : 14,
+                "name" : "optimization",
+                "children" : [{
+                    "id" : 15,
+                    "name" : "Aspect",
+                    "value" : 7074
+                }]
+            }]
+    }
+        
+        ]
+}

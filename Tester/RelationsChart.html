@@ -33,6 +33,8 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 <script src="http://d3js.org/d3-selection-multi.v1.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
+
 <script>
 
 
@@ -49,17 +51,10 @@ var g = svg.append("g")
 var text =  g.append('g')
     
 var color = d3.scaleOrdinal(d3.schemeCategory10);
-var k = [1,-1];
+
 var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(500).strength(0.02))
-//    .force("charge", d3.forceManyBody(-5000))
-//    .force("center", d3.forceCenter(width / 2, height / 2));
-//    .force("r", d3.forceRadial(function(d) {console.log(d.id === "App1",d.id === "App4"); return d.id === "App1" || d.id === "App4" ? 2000 : undefined ; }).strength(0.02))
-//    .force("xAxis",d3.forceX(function(d) {console.log(''); return d.id === "App1" ? width*0.3 : d.id === "App4" ? width*0.8 : k[parseInt(Math.random()*k.length)]*200+width*0.8 ; }).strength(0.01))
-//    .force("yAxis",d3.forceY(function(d) {console.log(''); return d.id === "App1" ? height*0.3 : d.id === "App4" ? height*0.8 : k[parseInt(Math.random()*k.length)]*200+height*0.8 ; }).strength(0.01))
-//    .force('collision', d3.forceCollide().radius(function(d) {
-//    return d.id+25
-//    }));
+    
 var target=[],
     source1=[],
     source2=[];
@@ -80,30 +75,21 @@ d3.json("Bubbles.json", function(error, graph) {
      .text(graph.title3)   
      .attr("transform",'translate(  715 , 130 )') 
         
-  for(var i=0;i<Math.max(graph.links1.length,graph.links2.length);i++){
-   if(graph.links1[i] !== undefined && source1.indexOf(graph.links1[i].source)==-1)   
-   source1.push(graph.links1[i].source)
-   if(graph.links2[i] !== undefined && source2.indexOf(graph.links2[i].source)==-1)
-   source2.push(graph.links2[i].source)
-   if(graph.links2[i] !== undefined && target.indexOf(graph.links2[i].target)==-1)
-   target.push(graph.links2[i].target)
-  }
-//  console.log(source1,source2,target)
-//g.append("defs").selectAll("marker")
-//    .data(graph.marker)
-//    .enter().append("marker")
-//    .attr("id", function(d) { return d;})
-//    .attr("viewBox", "0 -5 10 10")
-//    .attr("refX", function(d){ return (d*0.4+13/d*d);})
-//    .attr("refY", 0)
-//    .attr("markerWidth", 10)
-//    .attr("markerHeight", 10)
-//    .attr("orient", "auto")
-//    .append("path")
-//    .attr("d", "M0,-5L10,0L0,5")
-//    .attr('fill', function(d) { return color(3)});
 
+          _.each(graph.links1, function(row){
+              source1.push(row.source);
+              source2.push(row.target)
+            });
+          _.each(graph.links2, function(row){
+              source2.push(row.source)
+              target.push(row.target)
+            });
+           
+            source1= _.uniq(source1);
+            source2= _.uniq(source2);
+            target= _.uniq(target);
 
+// console.log(s1,s2,t)
   var links = graph.links2.concat(graph.links1);
 //  console.log(l,graph.links1);
   var link = g.append("g")
@@ -111,7 +97,7 @@ d3.json("Bubbles.json", function(error, graph) {
     .selectAll("path")
     .data(links)
     .enter().append("line")
-    .attr("id", function(d){return d.target;})
+    .attr("id", function(d){return (d.source + d.target);})
     .attr("stroke", function(d) { return color(d.source-3); })
     .attr("stroke-width", function(d) { return Math.sqrt(d.id); })
     .attr("marker-end", function(d) { return "url(#" + d.target + ")"; });
@@ -123,11 +109,7 @@ d3.json("Bubbles.json", function(error, graph) {
     .enter().append("g")
     .attr("class", "node")
     .attr("id", function(d,i){return d.id;})
-      .call(d3.drag()
-//        .on("start", dragstarted)
-//        .on("drag", dragged)
-//        .on("end", dragended)
-        )
+      .call(d3.drag())
         .on('mouseover', function(d) {var m=link._groups[0],n=node._groups[0];
                                       for(var i=0;i<m.length;i++){
                                           if(m[i].__data__.source.id == d.id || m[i].__data__.target.id == d.id){
@@ -161,10 +143,7 @@ d3.json("Bubbles.json", function(error, graph) {
           .text(d.name).attr("transform",'translate(  50 , 50 )'); 
         });
   
-//  node.select(".everything")
-//      .append("text")
-//      .text("Relation");
-//      .attr("transform","translate(-75 ,-30)");
+
   node.append("rect")
       .attr("width", 150)
       .attr("height", 50)
@@ -200,8 +179,7 @@ d3.json("Bubbles.json", function(error, graph) {
         .attr("transform", function(d) { return source1.indexOf(d.id)!== -1 ? "translate(" + 200 + "," + (source1.indexOf(d.id)*100+200) + ")" 
                                               : source2.indexOf(d.id)!== -1 ? "translate(" + 500 + "," + (source2.indexOf(d.id)*100+200) + ")"
                                               :                               "translate(" + 800 + "," + (target.indexOf(d.id)*100+200) + ")"; });
-//        .attr("x", function(d) { return d.x; })
-//        .attr("y", function(d) { return d.y; });
+
   }
 });
 
@@ -228,22 +206,6 @@ function slided(d) {
     zoom.scaleTo(svg,d3.select(this).property("value"));
 }
 
-//function dragstarted(d) {
-//  if (!d3.event.active) simulation.alphaTarget(2).restart();
-//  d.fx = d.x;
-//  d.fy = d.y;
-//}
-//
-//function dragged(d) {
-//  d.fx = d3.event.x;
-//  d.fy = d3.event.y;
-//}
-//
-//function dragended(d) {
-//  if (!d3.event.active) simulation.alphaTarget(0);
-//  d.fx = null;
-//  d.fy = null;
-//}
 
 </script>
 </body>

@@ -137,3 +137,402 @@
     ],
   "marker": [91,70,82,55,40]
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    
+  "title1":"ML Method",  
+  "title2":"Algorithm",
+  "title3":"Related Dataset",
+    
+  "nodes": [
+    {
+      "id": "1a",
+      "name": "Gool 1"
+    },
+    {
+      "id": "2a",
+      "name": "Gool 2"
+    },
+    {
+      "id": "3a",
+      "name": "Gool 3"
+    },
+    {
+      "id": "4b",
+      "name": "Initiative 4"
+    },
+    {
+      "id": "5b",
+      "name": "Initiative 5"
+    },
+    {
+      "id": "6b",
+      "name": "Initiative 6"
+    },
+    {
+      "id": "7b",
+      "name": "Initiative 7"
+    },
+    {
+      "id": "8b",
+      "name": "Initiative 8"
+    },
+    {
+      "id": "9b",
+      "name": "Project 9"
+    },
+    {
+      "id": "10c",
+      "name": "Project 10"
+    },
+    {
+      "id": "11c",
+      "name": "Project 11"      
+    },
+    {
+      "id": "12c",
+      "name": "Project 12"
+    },
+    {
+      "id": "13c",
+      "name": "Project 13"
+    }
+  ],
+  "links1": [
+    {
+      "source": "1a",
+      "target": "5b"
+    },
+    {
+      "source": "1a",
+      "target": "6b"
+    },
+    {
+      "source": "1a",
+      "target": "7b"
+    },
+    {
+      "source": "2a",
+      "target": "4b"
+    },
+    {
+      "source": "2a",
+      "target": "5b"
+    },
+    {
+      "source": "2a",
+      "target": "7b"
+    },
+    {
+      "source": "2a",
+      "target": "8b"
+    },
+    {
+      "source": "3a",
+      "target": "4b"
+      
+    },
+    {
+      "source": "3a",
+      "target": "7b"
+    },
+    {
+      "source": "3a",
+      "target": "6b"
+    }
+  ],
+  "links2":[
+    {
+      "source": "4b",
+      "target": "11c"
+    },
+    {
+      "source": "4b",
+      "target": "10c"
+    },
+    {
+      "source": "8b",
+      "target": "10c"
+    },
+    {
+      "source": "5b",
+      "target": "12c"
+    },
+    {
+      "source": "5b",
+      "target": "11c"
+    },
+    {
+      "source": "6b",
+      "target": "13c"
+    },
+    {
+      "source": "9b",
+      "target": "13c"
+    },
+    {
+      "source": "7b",
+      "target": "13c"
+    }
+    ],
+  "marker": [91,70,82,55,40]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "title1": "Goals",
+  "title2": "Initiatives",
+  "title3": "Projects",
+  "nodes": [
+    {
+      "active": true,
+      "createdBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "createdDate": 1517529600000,
+      "updatedBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "updatedDate": 1527569564000,
+      "company": "ARC-Realm",
+      "id": "1G",
+      "rateId": 1,
+      "customId": "cust.1",
+      "name": "busines goal 1",
+      "description": "desc",
+      "alias": "alias"
+    },
+
+    {
+      "active": true,
+      "createdBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "createdDate": 1524424828000,
+      "updatedBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "updatedDate": 1526412700000,
+      "company": "ARC-Realm",
+      "id": "45I",
+      "name": "ini 105 e",
+      "description": "105 ini desc e",
+      "customId": "105 e8",
+      "rank": "44",
+      "startDate": 1514246400000,
+      "endDate": 1523836800000,
+      "plannedBudget": 55,
+      "businessCriticalityId": 3
+    },
+    {
+      "active": true,
+      "createdBy": "8f6c5d26-31e8-4852-92ef-d0aca4b889b9",
+      "createdDate": 1525794463000,
+      "updatedBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "updatedDate": 1526731325000,
+      "company": "ARC-Realm",
+      "id": "46I",
+      "name": "Initiative A",
+      "description": "Initiative A",
+      "customId": "Initiative A",
+      "rank": "1",
+      "startDate": 1525132800000,
+      "endDate": 1537228800000
+    },
+    {
+      "active": true,
+      "createdBy": "8f6c5d26-31e8-4852-92ef-d0aca4b889b9",
+      "createdDate": 1525794560000,
+      "updatedBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "updatedDate": 1526435027000,
+      "company": "ARC-Realm",
+      "id": "47I",
+      "name": "Initiative B",
+      "description": "Initiative B",
+      "customId": "Initiative B",
+      "rank": "2",
+      "startDate": 1525219200000,
+      "endDate": 1544313600000,
+      "businessCriticalityId": 3
+    },
+    {
+      "active": true,
+      "createdBy": "8f6c5d26-31e8-4852-92ef-d0aca4b889b9",
+      "createdDate": 1525794679000,
+      "updatedBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "updatedDate": 1526866677000,
+      "company": "ARC-Realm",
+      "id": "49I",
+      "name": "Initiative B-2",
+      "description": "Initiative B-2",
+      "customId": "Initiative B-2",
+      "rank": "3",
+      "startDate": 1524960000000,
+      "endDate": 1538956800000,
+      "plannedBudget": 12
+    },
+    {
+      "active": true,
+      "createdBy": "8f6c5d26-31e8-4852-92ef-d0aca4b889b9",
+      "createdDate": 1525794818000,
+      "updatedBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "updatedDate": 1526723153000,
+      "company": "ARC-Realm",
+      "id": "51I",
+      "name": "Initiative C-1",
+      "description": "Initiative C-1",
+      "customId": "Initiative C-11",
+      "rank": "3",
+      "startDate": 1518048000000,
+      "endDate": 1521072000000
+    },
+    {
+      "projectManager": {
+        "id": "b879baf8-a575-421b-865d-28d1b3afc1c4"
+      },
+      "updatedBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "description": "addedFayez#1 test",
+      "active": false,
+      "updatedDate": 1521547836000,
+      "customId": "Project1",
+      "updatedDateLong": 1521547836000,
+      "plannedCost": 100,
+      "createdDate": 1517859711000,
+      "createdBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "createdDateLong": 1517859711000,
+      "name": "Project4",
+      "company": "ARC-Realm",
+      "id": "87P"
+    },
+    {
+      "projectManager": {
+        "id": "90a308c9-d0c7-4b33-a120-c0704a98cb42"
+      },
+      "updatedBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "description": "description for project 1 \nthe details",
+      "active": false,
+      "updatedDate": 1519827075000,
+      "customId": "Project2",
+      "updatedDateLong": 1519827075000,
+      "plannedCost": 0,
+      "createdDate": 1517862398000,
+      "createdBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "createdDateLong": 1517862398000,
+      "name": "Project2",
+      "company": "ARC-Realm",
+      "id": "88P"
+    },
+    {
+      "projectManager": {
+        "id": "90a308c9-d0c7-4b33-a120-c0704a98cb42"
+      },
+      "updatedBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "description": "project 3  description",
+      "active": false,
+      "updatedDate": 1520021634000,
+      "customId": "Project3",
+      "updatedDateLong": 1520021634000,
+      "plannedCost": 100,
+      "createdDate": 1517862484000,
+      "createdBy": "3fc2476e-9be5-45fe-b46c-6451480760b6",
+      "createdDateLong": 1517862484000,
+      "name": "Project3",
+      "company": "ARC-Realm",
+      "id": "89P"
+    }
+
+  ],
+  "links1": [
+    {
+      "source": "1G",
+      "target": "45I"
+    },
+    {
+      "source": "1G",
+      "target": "46I"
+    },
+    {
+      "source": "1G",
+      "target": "47I"
+    }
+  ],
+  "links2": [
+    {
+      "source": "45I",
+      "target": "88P"
+    },
+    {
+      "source": "51I",
+      "target": "87P"
+    },
+    {
+      "source": "49I",
+      "target": "87P"
+    },
+    {
+      "source": "49I",
+      "target": "88P"
+    },
+    {
+      "source": "49I",
+      "target": "89P"
+    }
+  ],
+  "marker": [
+    "45I",
+    "46I",
+    "47I",
+    "88P",
+    "87P",
+    "87P",
+    "88P",
+    "89P"
+  ]
+}
