@@ -37,7 +37,7 @@ var margin = {
 	barWidth = (width - margin.left - margin.right) * 0.3;
 
 var i = 0,
-	duration = 1000,
+	duration = 300,
 	root;
 
 //var diagonal = d3.linkHorizontal()
@@ -58,7 +58,7 @@ d3.json("flare.json", function (error, flare) {
 	if (error) throw error;
 	root = d3.hierarchy(flare);
 	//  console.log(flare);
-	console.log(root);
+//	console.log(root);
 	root.x0 = 0;
 	root.y0 = 0;
 
@@ -71,7 +71,8 @@ d3.json("flare.json", function (error, flare) {
 });
 
 function update(source) {
-
+//        d3.select(this).remove();
+//       console.log(d3.select(this))
 	// Compute the flattened node list.
 	var nodes = [];
 	//  root.descendants();
@@ -94,7 +95,7 @@ function update(source) {
 	root.eachAfter(function (n) {
 		k.push(n);
 	})
-	console.log(k)
+//	console.log(k)
 	var i = -1;
 	var y = -1;
 	var l;
@@ -104,48 +105,74 @@ function update(source) {
 			i++;
 			l = n.parent.children.length
 			//        n.x = 1000 - 30;  
-			n.y = (l - 1 - (++y)) % 3 * 70;
+			n.y = (l - 1 - (++y)) % 3 * 70+20;
 			n.y2 = n.y + 50
-			n.x = m + ((parseInt(l / 3) + parseInt((l - y - 1) / 3)) * 25);
+			n.x = m + (((l<3?1:parseInt(l / 3)) + parseInt((l - y - 1) / 3)) * 25);
 			n.x2 = n.x + 20
 			//          console.log(n,l,y)
-		} else if (n.children) {
+		} else if (n.children && n.depth !==0) {
 			y = -1;
 			//  console.log(i,k[i].x,m)
-			n.x = k[i].x-5;
-			n.x2 = n.x + (n.children.length/3)*25+20
-			console.log(n.x2)
+			n.x = k[i].x-20;
+//                        console.log(n.x)
+			n.x2 = (n.children[0].x2)+10;
+//			console.log(n.x2)
 			m = n.x2;
 			i++;
 			//    n.x = ++i * barHeight;
 			n.y = 0;
 			n.y2 = n.y + 50
 			//    n.y2 = n.depth * 20;
-		} else if (i == -1) {
+//                        console.log(n.x);
+//			console.log(n.x2);                        
+		} else if (i == k.length-2 ) {
+			n.x = ((n.children == null)?5:n.children[0].x)-20
+                        n.x2 = ((n.children == null)?0:n.children[n.children.length-1].x2) + 5;
+			n.y = 0;
+			m = n.x2;
+			i++;                    
+//			n.x = m + 20;
+//                        n.x2 = n.x + 20;
+//                        m = n.x2 +5
+//			n.y = 0;
+//			i++;
+//                        console.log(n.x);
+//			console.log(n.x2);
+		} else if (i == -1 ){
 			n.x = m + 10;
                         n.x2 = n.x + 20;
-                        m = n.x2 +5
+                        m = n.x2
 			n.y = 0;
-			i++;
-			console.log(n.x2)
-		} else {
+			i++;                    
+//			n.x = (n.children[0].x)-20
+//                        n.x2 = (n.children[n.children.length].x) + 20;
+//			n.y = 0;
+//			m = n.x2 + 5;
+//			i++;
+//			console.log(n.x)
+//			console.log(n.x2)
+		}else { 
 			n.x = k[i].x2+5;
-                        n.x2 = n.x + 10;
+                        n.x2 = n.x + 20;
 			n.y = 0;
-			m = n.x2 + 5;
+			m = n.x2;
 			i++;
-			console.log(n.x2)
+//			console.log(n.x)
+//			console.log(n.x2)
 		}
 
 	});
 
 	// Update the nodes…
 	i = 0;
+        
+        
 	var node = svg.selectAll(".nodePortfolio")
 		.data(nodes, function (d) {
 			return d.id || (d.id = ++i);
 		});
-
+        
+        
 	var nodeEnter = node.enter().append("g")
 		.attr("class", "nodePortfolio")
 		.attr("transform", function (d) {
@@ -158,9 +185,9 @@ function update(source) {
 		.attr("y", -barHeight / 2)
 		.attr("height", function (d) {
 			return  d.x2 - d.x
-		})
+		})		
 		.attr("width", function (d) {
-			return d.children ? 230 : d.y2 - d.y
+			return d.children || d._children ? 230 : d.y2 - d.y
 		})
 		.style("fill", color)
 		.on("click", click);
@@ -179,16 +206,22 @@ function update(source) {
 			return "translate(" + d.y + "," + d.x + ")";
 		})
 		.style("opacity", 1);
-
+        
 	node.transition()
 		.duration(duration)
 		.attr("transform", function (d) {
 			return "translate(" + d.y + "," + d.x + ")";
 		})
-		.style("opacity", 1)
-		.select("rect")
-		.style("fill", color);
-
+        
+        node.select("rect")
+            .transition()
+            .duration(duration)
+            .attr("height", function (d) {
+                    return  d.x2 - d.x
+            })
+            .style("opacity", 1)            
+            .style("fill", color);
+                                
 	// Transition exiting nodes to the parent's new position.
 	node.exit().transition()
 		.duration(duration)
@@ -197,7 +230,7 @@ function update(source) {
 		})
 		.style("opacity", 0)
 		.remove();
-
+//console.log(node.exit())
 	// Update the links…
 //	var link = svg.selectAll(".link")
 //		.data(root.links(), function (d) {
@@ -250,7 +283,7 @@ function update(source) {
 
 // Toggle children on click.
 function click(d) {
-	//    console.log(d)
+//	    console.log(d)
 	if (d.children) {
 		d._children = d.children;
 		d.children = null;
